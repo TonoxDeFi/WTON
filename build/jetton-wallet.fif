@@ -275,6 +275,10 @@ PROGRAM{
     64 LDU	//  fwd_fee sender_address msg_value query_id in_msg_body
     LDVARUINT16	//  fwd_fee sender_address msg_value query_id jetton_amount in_msg_body
     LDMSGADDR	//  fwd_fee sender_address msg_value query_id jetton_amount to_owner_address in_msg_body
+    0 PUSHINT	//  fwd_fee sender_address msg_value query_id jetton_amount to_owner_address in_msg_body _14
+    s2 PUSH
+    333 PUSHINT	//  fwd_fee sender_address msg_value query_id jetton_amount to_owner_address in_msg_body _14 to_owner_address _15=333
+    force_chain INLINECALLDICT
     load_data INLINECALLDICT	//  fwd_fee sender_address msg_value query_id jetton_amount to_owner_address in_msg_body balance owner_address jetton_master_address jetton_wallet_code
     s3 s6 XCPU	//  fwd_fee sender_address msg_value query_id jetton_amount to_owner_address in_msg_body jetton_wallet_code owner_address jetton_master_address balance jetton_amount
     SUB	//  fwd_fee sender_address msg_value query_id jetton_amount to_owner_address in_msg_body jetton_wallet_code owner_address jetton_master_address balance

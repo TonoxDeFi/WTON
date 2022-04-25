@@ -25,7 +25,7 @@
   return wc;
 }
 
-() force_chain(int workchain, slice address, int error_code) inline {
+() force_chain(int workchain, slice address, int error_code) impure inline {
   (int wc) = get_workchain(address);
   throw_unless(error_code, wc == workchain);
 }
