@@ -5,13 +5,8 @@ PROGRAM{
   DECLPROC avg
   DECLPROC exp
   DECLPROC log2
-  DECLPROC get_contract_address
-  DECLPROC to_ton
-  DECLPROC from_ton
   DECLPROC get_workchain
   DECLPROC force_chain
-  DECLPROC get_query_id
-  DECLPROC get_serialized_address
   DECLPROC pack_jetton_wallet_data
   DECLPROC calculate_jetton_wallet_state_init
   DECLPROC calculate_jetton_wallet_address
@@ -154,28 +149,6 @@ PROGRAM{
       INC	//  n
     }>	//  n
   }>
-  get_contract_address PROC:<{
-    //  workchain state_init
-    HASHCU	//  workchain _2
-    4 PUSHINT	//  workchain _2 _3=4
-    NEWC	//  workchain _2 _3=4 _4
-    3 STU	//  workchain _2 _6
-    s1 s2 XCHG	//  _2 workchain _6
-    8 STI	//  _2 _8
-    256 STU	//  _10
-    ENDC	//  _11
-    CTOS	//  _12
-  }>
-  to_ton PROC:<{
-    //  amount
-    1000000000 PUSHINT	//  amount _1=1000000000
-    MUL	//  _2
-  }>
-  from_ton PROC:<{
-    //  amount
-    1000000000 PUSHINT	//  amount _1=1000000000
-    DIV	//  _2
-  }>
   get_workchain PROC:<{
     //  address
     REWRITEVARADDR	//  _4 _5
@@ -188,27 +161,6 @@ PROGRAM{
     ROT	//  error_code wc workchain
     EQUAL	//  error_code _5
     THROWANYIFNOT
-  }>
-  get_query_id PROC:<{
-    // 
-    NOW	//  _0
-    LTIME	//  _0 _1
-    32 PUSHPOW2	//  _0 _1 _2=4294967296
-    MOD	//  _0 _3
-    ADD	//  _4
-  }>
-  get_serialized_address PROC:<{
-    //  workchain address
-    0 PUSHINT	//  workchain address _2=0
-    2 PUSHINT	//  workchain address _2=0 _3=2
-    NEWC	//  workchain address _2=0 _3=2 _4
-    2 STU	//  workchain address _2=0 _6
-    1 STU	//  workchain address _8
-    s1 s2 XCHG	//  address workchain _8
-    8 STU	//  address _10
-    256 STU	//  _12
-    ENDC	//  _13
-    CTOS	//  _14
   }>
   pack_jetton_wallet_data PROC:<{
     //  balance owner_address jetton_master_address jetton_wallet_code

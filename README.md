@@ -3,10 +3,10 @@ This smart contract provides an implementation of wrapped toncoin, called XTON, 
 This token was developed in accordance with the [Fungible Token Standard TIP-74](https://github.com/ton-blockchain/TIPs/issues/74). 
 
 ## Deployed contract addresses
-The XTON contract is deployed and verified to the address `EQC4TdkCVwAf_xLoEKefWDsHHLRC-Mq-S1r76r24L_n8e-g8` on both networks:
+The XTON contract is deployed and verified to the address `EQAK5EkHMiBDFnE_aURwVGCzJV8UO4HgN0P_t-GesaAa1jdB` on both networks:
 
-* Mainnet: [EQC4TdkCVwAf_xLoEKefWDsHHLRC-Mq-S1r76r24L_n8e-g8](https://tonscan.org/address/EQC4TdkCVwAf_xLoEKefWDsHHLRC-Mq-S1r76r24L_n8e-g8)
-* Testnet: [EQC4TdkCVwAf_xLoEKefWDsHHLRC-Mq-S1r76r24L_n8e-g8](https://testnet.tonscan.org/address/EQC4TdkCVwAf_xLoEKefWDsHHLRC-Mq-S1r76r24L_n8e-g8)
+* Mainnet: [EQAK5EkHMiBDFnE_aURwVGCzJV8UO4HgN0P_t-GesaAa1jdB](https://tonscan.org/address/EQAK5EkHMiBDFnE_aURwVGCzJV8UO4HgN0P_t-GesaAa1jdB)
+* Testnet: [EQAK5EkHMiBDFnE_aURwVGCzJV8UO4HgN0P_t-GesaAa1jdB](https://testnet.tonscan.org/address/EQAK5EkHMiBDFnE_aURwVGCzJV8UO4HgN0P_t-GesaAa1jdB)
 
 ## Disclaimer
 This contract has not been audited (yet), nor formally verified. Use at your own risk.
