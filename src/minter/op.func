@@ -1,11 +1,15 @@
-int op::transfer() asm "0xf8a7ea5 PUSHINT";
+;; standard
+const BURN_NOTIFICATION = 0x7bdd97de;
+const EXCESSES = 0xd53276db;
+const INTERNAL_TRANSFER = 0x178d4519;
+
+;; other
+const SKIM = 40;
+const UPDATE_ADMIN = 41;
+const UPDATE_CONTENT = 42;
+
 int op::transfer_notification() asm "0x7362d09c PUSHINT";
 int op::internal_transfer() asm "0x178d4519 PUSHINT";
 int op::excesses() asm "0xd53276db PUSHINT";
 int op::burn() asm "0x595f07bc PUSHINT";
 int op::burn_notification() asm "0x7bdd97de PUSHINT";
-
-;; Minter
-int op::mint() asm "21 PUSHINT";
-int op::collect_fee() asm "22 PUSHINT";
-int op::fee_collected_notification() asm "23 PUSHINT";

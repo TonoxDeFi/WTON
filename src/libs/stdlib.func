@@ -214,3 +214,4 @@ int equal_slices (slice a, slice b) asm "SDEQ";
 int builder_null?(builder b) asm "ISNULL";
 builder store_builder(builder to, builder from) asm "STBR";
 
+(int) mod (int x, int y) asm "MOD";

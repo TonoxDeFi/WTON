@@ -1,9 +1,0 @@
-(int) get_workchain(slice address) inline {
-  (int wc, _) = parse_var_addr(address);
-  return wc;
-}
-
-() force_chain(int workchain, slice address, int error_code) impure inline {
-  (int wc) = get_workchain(address);
-  throw_unless(error_code, wc == workchain);
-}
