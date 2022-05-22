@@ -1,6 +1,7 @@
 #include "libs/stdlib.func";
 #include "minter/op.func";
 #include "minter/params.func";
+#include "minter/errors.func";
 #include "libs/utils.func";
 #include "minter/storage.func";
 
@@ -18,13 +19,10 @@
 }
 
 () recv_internal(int balance, int msg_value, cell in_msg_full, slice in_msg_body) impure {
-    if (in_msg_body.slice_empty?()) { ;; ignore empty messages
-        return ();
-    }
     slice cs = in_msg_full.begin_parse();
     int flags = cs~load_uint(4);
 
-    if (flags & 1) { ;; ignore all bounced messages
+    if (flags & 1) { 
         return ();
     }
     slice sender_address = cs~load_msg_addr();
@@ -32,12 +30,12 @@
     (int total_supply, slice admin_address, cell content, cell jetton_wallet_code) = load_data();
 
     if (in_msg_body.slice_empty?()) {
-        int buy_amount = msg_value - MINT_FEE;
-        throw_unless("invalid amount"u, buy_amount > 0);
+        int buy_amount = msg_value - MINT_FEE - STORAGE_FEE;
+        throw_unless(INVALID_AMOUNT, buy_amount > 0);
 
         var master_msg = begin_cell()
             .store_uint(INTERNAL_TRANSFER, 32)
-            .store_uint(0, 64) ;; quert_id
+            .store_uint(0, 64) 
             .store_coins(buy_amount)
             .store_slice(my_address()) 
             .store_slice(sender_address) 
@@ -45,7 +43,7 @@
             .store_uint(0, 1)
         .end_cell();
 
-        mint_tokens(sender_address, jetton_wallet_code, buy_amount, master_msg);
+        mint_tokens(sender_address, jetton_wallet_code, MINT_FEE, master_msg);
         save_data(total_supply + buy_amount, admin_address, content, jetton_wallet_code);
         return ();
     }
@@ -56,7 +54,7 @@
     if (op == BURN_NOTIFICATION) {
         int jetton_amount = in_msg_body~load_coins();
         slice from_address = in_msg_body~load_msg_addr();
-        throw_unless("wrong caller"u, equal_slices(calculate_user_jetton_wallet_address(from_address, my_address(), jetton_wallet_code), sender_address));
+        throw_unless(WRONG_CALLER, equal_slices(calculate_user_jetton_wallet_address(from_address, my_address(), jetton_wallet_code), sender_address));
         save_data(total_supply - jetton_amount, admin_address, content, jetton_wallet_code);
         slice response_address = in_msg_body~load_msg_addr();
         if (response_address.preload_uint(2) != 0) {
@@ -74,7 +72,7 @@
 
     if (op == SKIM) { 
         int supply_with_reserve = total_supply + MINIMAL_RESERVE;
-        throw_unless("insufficient balance"u, balance > supply_with_reserve);
+        throw_unless(INSUFFICIENT_BALANCE, balance > supply_with_reserve);
         var msg = begin_cell()
             .store_uint(0x18, 6) ;; nobounce
             .store_slice(admin_address)
@@ -87,14 +85,14 @@
     }
 
     if (op == UPDATE_ADMIN) {
-        throw_unless("unauthorized"u, equal_slices(sender_address, admin_address));
+        throw_unless(UNAUTHORIZED, equal_slices(sender_address, admin_address));
         slice new_admin_address = in_msg_body~load_msg_addr();
         save_data(total_supply, new_admin_address, content, jetton_wallet_code);
         return ();
     }
 
     if (op == UPDATE_CONTENT) {
-        throw_unless("unauthorized"u, equal_slices(sender_address, admin_address));
+        throw_unless(UNAUTHORIZED, equal_slices(sender_address, admin_address));
         save_data(total_supply, admin_address, in_msg_body~load_ref(), jetton_wallet_code);
         return ();
     }
