@@ -30,7 +30,7 @@
     (int total_supply, slice admin_address, cell content, cell jetton_wallet_code) = load_data();
 
     if (in_msg_body.slice_empty?()) {
-        int buy_amount = msg_value - MINT_FEE - STORAGE_FEE;
+        int buy_amount = msg_value - MINT_FEE - PROCESS_FEE;
         throw_unless(INVALID_AMOUNT, buy_amount > 0);
 
         var master_msg = begin_cell()
