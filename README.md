@@ -3,7 +3,7 @@ This smart contract provides an implementation of wrapped toncoin, called WTON, 
 This token was developed in accordance with the [Fungible Token Standard TIP-74](https://github.com/ton-blockchain/TIPs/issues/74). 
 
 ## Deployed contract addresses
-The WTON contract is deployed and verified to the address `EQAK5EkHMiBDFnE_aURwVGCzJV8UO4HgN0P_t-GesaAa1jdB` on both networks:
+The WTON contract is deployed and verified to the address `EQDQoc5M3Bh8eWFephi9bClhevelbZZvWhkqdo80XuY_0qXv` on both networks:
 
-* Mainnet: [EQAK5EkHMiBDFnE_aURwVGCzJV8UO4HgN0P_t-GesaAa1jdB](https://tonscan.org/address/EQAK5EkHMiBDFnE_aURwVGCzJV8UO4HgN0P_t-GesaAa1jdB)
-* Testnet: [EQAK5EkHMiBDFnE_aURwVGCzJV8UO4HgN0P_t-GesaAa1jdB](https://testnet.tonscan.org/address/EQAK5EkHMiBDFnE_aURwVGCzJV8UO4HgN0P_t-GesaAa1jdB)
+* Mainnet: [EQDQoc5M3Bh8eWFephi9bClhevelbZZvWhkqdo80XuY_0qXv](https://tonscan.org/address/EQDQoc5M3Bh8eWFephi9bClhevelbZZvWhkqdo80XuY_0qXv)
+* Testnet: [EQDQoc5M3Bh8eWFephi9bClhevelbZZvWhkqdo80XuY_0qXv](https://testnet.tonscan.org/address/EQDQoc5M3Bh8eWFephi9bClhevelbZZvWhkqdo80XuY_0qXv)
