@@ -7,3 +7,9 @@ The WTON contract is deployed and verified to the address `EQDQoc5M3Bh8eWFephi9b
 
 * Mainnet: [EQDQoc5M3Bh8eWFephi9bClhevelbZZvWhkqdo80XuY_0qXv](https://tonscan.org/address/EQDQoc5M3Bh8eWFephi9bClhevelbZZvWhkqdo80XuY_0qXv)
 * Testnet: [EQDQoc5M3Bh8eWFephi9bClhevelbZZvWhkqdo80XuY_0qXv](https://testnet.tonscan.org/address/EQDQoc5M3Bh8eWFephi9bClhevelbZZvWhkqdo80XuY_0qXv)
+
+## Donate
+If you like this project, please consider donating to the following address:
+```
+EQDnLXD_E_U7ZZO6k57Fpyp6flVy4QetQSbUUOtFuORn1nu7
+```
